@@ -16,17 +16,15 @@ function getDataFromApi(searchTerm, callback) {
 }
 
 function renderResult(result) {
-  console.log(result);
+  //console.log(result);
   //var vId=console.log(result.id.videoId);
   //var vId=result.id.videoId;
   //console.log(vId);
   console.log(result.id.videoId);
-  //console.log(totalResults);
   return `
     <div>
       <h2>${result.snippet.title}</h2>
-      <p>Check out ${result.snippet.title}'s video!</p>
-      <a class="js-result-name" href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank"> <img src="${result.snippet.thumbnails.medium.url}" alt= "${result.snippet.title}'s video"</a> 
+      <a class="js-result-name" href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank"> <img src="${result.snippet.thumbnails.medium.url}"></a>
     </div>
   `;
 }
@@ -42,11 +40,9 @@ function displayYouTubeSearchData(data) {
      //const results = data.items.map( function (item, index) { 
      //return renderResult(item)
    //});
-   
  const results = data.items.map((item, index) => renderResult(item));
   //console.log(data);
-  //$('.js-search-results').prepend(`<h4>About ${data.pageInfo.totalResults} results </h4>`);
-  $('.js-search-results').html(`About ${data.pageInfo.totalResults} results` + results);
+  $('.js-search-results').html(results);
 }
 
 function watchSubmit() {
